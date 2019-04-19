@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %}DOCUMENTS {% endblock %}
+{% block content %}
+<form action="." method="POST">{% csrf_token %}
+  {{ doc_form }}
+</form>
+<p><input type="submit" value="SUBMIT"></p>
+
+{% endblock %}

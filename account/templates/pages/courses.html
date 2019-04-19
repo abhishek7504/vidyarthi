@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title%}COURSES{% endblock%}
+{% block content %}
+<form action="." method="POST">{% csrf_token %}
+  {{ couses_form }}
+</form>
+<a href="{% url 'other_doc' %}">NEXT</a>
+{% endblock %}

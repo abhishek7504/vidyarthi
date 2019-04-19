@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{%load staticfiles%}
+
+{% block content %}
+<h1>WELCOME TO YOUR DASHBOARD HERE YOU CAN ACCESS YOUR PROFILE</h1>
+
+<div class="dashboard">
+    <div class="cell">
+      <div class="box box1">
+        <h1><a href="{% url 'profile' %}">Complete Your Profile</a></h1>
+      </div>
+    </div>
+    <br>
+    <div class="cell">
+      <div class="box box2">
+        <h1><a href="{% url 'education' %}">eductaion</a></h1>
+      </div>
+    </div>
+    <br>
+    <div class="cell">
+      <div class="box box3">
+        <h1><a href="{% url 'courses' %}">courses</a></h1>
+      </div>
+    </div>
+    <br>
+    <div class="cell">
+      <div class="box box4">
+        <h1><a href="{% url 'other_doc'%}">other_doc</a></h1>
+      </div>
+    </div>
+  </div>
+  <br>
+
+<a href="{% url 'password_change'  %}"><h3><b>  CHANGE PASSWORD </b></h3></a>
+<br>
+
+
+
+<a href="{%url 'logout'%}"><h3><b>LOGUT </b></h3></a>
+
+{% endblock %}
