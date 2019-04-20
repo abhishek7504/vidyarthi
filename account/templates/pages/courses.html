@@ -3,8 +3,9 @@
 
 {% block title%}COURSES{% endblock%}
 {% block content %}
-<form action="." method="POST">{% csrf_token %}
-  {{ couses_form }}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+  {{ couses_form.as_p }}
+  <input type="submit" value="Submit">
 </form>
-<a href="{% url 'other_doc' %}">NEXT</a>
+
 {% endblock %}

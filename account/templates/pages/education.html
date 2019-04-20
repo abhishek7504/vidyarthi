@@ -3,11 +3,8 @@
 
 {% block title%}education{% endblock %}
 {% block content%}
-<form action="." method="POST">
-  {% csrf_token %}
-  <br>
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
   {{ education_form.as_p }}
-  <br>
   <input type="submit" value="Submit">
 </form>
 {% endblock %}

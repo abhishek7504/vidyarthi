@@ -3,9 +3,9 @@
 
 {% block title %}DOCUMENTS {% endblock %}
 {% block content %}
-<form action="." method="POST">{% csrf_token %}
-  {{ doc_form }}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+  {{ doc_form.as_p }}
+  <input type="submit" value="Submit">
 </form>
-<p><input type="submit" value="SUBMIT"></p>
 
 {% endblock %}
