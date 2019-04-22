@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'work'
     # 'taggit',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
@@ -139,3 +143,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "media", "static_root")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -32,11 +32,12 @@
               <li>
                 <a href="/">Contact</a>
               </li>
+              {% if request.user.is_authenticated %}
               <li>
                 <a href="#!" class="dropdown-button" data-activates="dropdown">
                   Edit Profile<i class="material-icons right">arrow_drop_down</i></a>
               </li>
-              {% if request.user.is_authenticated %}
+             
               Hello  {{ request.user.first_name }},
               <li>
                   <a href="#!"><i class="material-icons">person</i></a>
@@ -73,6 +74,7 @@
         </div>
       </nav>
     </div>
+    
     <ul class="dropdown-content" id="dropdown">
       <li><a href="{% url 'profile' %}">Edit Profile</a></li>
       <li><a href="{% url 'education' %}">Edit Education</a></li>
@@ -80,12 +82,14 @@
       <li><a href="{% url 'other_doc'%}">Edit Other Docs</a></li>
       <li><a href="{% url 'password_change'%}">Change Password</a></li>
     </ul>
+  
     <!-- Nav bar ends -->
     <div class="row">
         <div class="col xl3 l3  m12 s12">
           </div>
     <div class="col xl6 l6 m12 s12">
         {% block content %}
+
         {% endblock %}
       </div>
       <div class="col xl3 l3  m12 s12">

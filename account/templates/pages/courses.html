@@ -3,9 +3,15 @@
 
 {% block title%}COURSES{% endblock%}
 {% block content %}
-<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-  {{ couses_form.as_p }}
-  <input type="submit" value="Submit">
-</form>
+<div class="card-panel teal lighten-2">
+    <h4 class="center white-text">Edit your Course </h4>
+  </div>
+  <div class="card-panel">
+      <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ couses_form.as_p }}
+        <input type="submit" value="Submit">
+      </form>
+  </div>
+
 
 {% endblock %}
