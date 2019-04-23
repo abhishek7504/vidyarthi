@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{%load staticfiles%}
+
+{% block content %}
+<div class="card-panel teal lighten-2">
+    <h4 class="center white-text">WELCOME TO YOUR DASHBOARD HERE YOU CAN ACCESS YOUR PROFILE</h4>
+  </div>
+
+ <div class="card-panel">
+        <h2><a href="{% url 'work:profile' %}">Complete Your Profile</a></h2>
+</div>
+
+       <div class="card-panel">
+        <h1><a href="{% url 'work:education' %}">eductaion</a></h1>
+      </div>
+
+      <div class="card-panel">
+        <h1><a href="{% url 'work:courses' %}">courses</a></h1>
+    </div>
+
+      <div class="card-panel">
+        <h1><a href="{% url 'work:other_doc'%}">other_doc</a></h1>
+      </div>
+
+  
+
+<a href="{% url 'password_change'  %}"><h3><b>  CHANGE PASSWORD </b></h3></a>
+
+{% endblock %}

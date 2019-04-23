@@ -9,7 +9,9 @@
   <div class="card-panel">
       <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
         {{ doc_form.as_p }}
-        <input type="submit" value="Submit">
+    <div class="center">
+      <input  type="submit" value="SAVE CHANGES" class="btn-large waves-effect waves-light  z-depth-5">
+    </div>
       </form>
   </div>
 

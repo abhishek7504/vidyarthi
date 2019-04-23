@@ -12,9 +12,10 @@
         <form class="login-form"  method="POST">{% csrf_token %}
             {{ user_form }}
             <input type="hidden" name="next" value="{{ next }}">
-            <input class ="form-button" type="submit" value="Sign Up">
-            <!-- <p class="message">Not registered? <a href="{% url 'register' %}">Create an account</a></p>
-            <a href="{% url 'password_reset' %}"> Forget Password</a> -->
+            <div class="center">
+            <input  type="submit" value="Sign Up" class="btn-large waves-effect waves-light  z-depth-5">
+         </div>
+         
           </form>
     </div>
 

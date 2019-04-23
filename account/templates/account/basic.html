@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-{% block title %}basic info {% endblock %}
-{% block content %}
-<form action="." method="POST">{% csrf_token %}
-  {{ input_form }}
-</form>
-<a href="{% url 'eductaion' %}">NEXT</a>
-{% endblock %}

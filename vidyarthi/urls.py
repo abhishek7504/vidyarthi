@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
     path('', include('account.urls')),
+    path('profile/', include('work.urls', namespace='work')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from . forms import UserRegistrationForm 
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from work.models import Profile
 
+
+def dashboard(reqeust):
+
+    return render(reqeust,'pages/dashboard.html',{'section':'dashboard'})
 
 
 # User = get_user_model()

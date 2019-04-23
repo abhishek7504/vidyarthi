@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static%}
 
 {% block title%}education{% endblock %}
 {% block content%}
+
 <div class="card-panel teal lighten-2">
-    <h4 class="center white-text">Edit your Profile </h4>
+    <h4 class="center white-text">Edit your Education </h4>
   </div>
   <div class="card-panel">
       <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
-        {{ input_form|crispy }}
-        <input type="submit" value="Submit">
+        {{ education_form.as_p }}
+    <div class="center">
+      <input  type="submit" value="SAVE CHANGES" class="btn-large waves-effect waves-light  z-depth-5">
+    </div>
       </form>
   </div>
-
 
 {% endblock %}
