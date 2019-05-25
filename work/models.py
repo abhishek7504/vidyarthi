@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # from taggit.managers import TaggableManager
 from django.core.validators import RegexValidator
 from django.urls import reverse
-
+from django.template.defaultfilters import slugify
 '''PROFILE'''
 
 class Profile(models.Model):
@@ -25,11 +25,25 @@ class Profile(models.Model):
     area = models.CharField(max_length = 50,default='any')
     country = models.CharField(max_length=50, choices=COUNTRY_CHOICES ,default ='india')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES,default='student')
-
+    slug = models.SlugField(max_length=50, null=True, blank=True)
     
 
     def __str__(self):
         return 'Profile for user{}'.format(self.user)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.user.username)
+        super(Profile, self).save(*args, **kwargs)
+
+
+class ProfileQRCode(models.Model):
+    profile = models.OneToOneField(Profile, related_name='qr_code', on_delete=models.CASCADE, max_length=100,
+                                         null=True, blank=True, unique=True)
+    qr_code = models.ImageField(upload_to="QR_codes/", null=True, blank=True)
+    
+    def save(self, *args, **kwargs):
+        super(ProfileQRCode, self).save(*args, **kwargs)
 
 '''EDUCATION'''
 

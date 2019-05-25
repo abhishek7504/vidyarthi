@@ -4,11 +4,16 @@ from django.contrib.auth.models import User
 from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 
+def profile(reqeust, slug):
+    profile = get_object_or_404(Profile, slug=slug)
+
+    return render(reqeust,'pages/view_profile.html',{})
 
 @login_required   
-def profile(request):
+def basic_info(request):
     
     if request.method == 'POST':
         input_form = ProfileForm(data=request.POST, instance=request.user.profile, files=request.FILES)
