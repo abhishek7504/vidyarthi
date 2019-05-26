@@ -10,7 +10,7 @@ from .models import Profile
 def profile(reqeust, slug):
     profile = get_object_or_404(Profile, slug=slug)
 
-    return render(reqeust,'pages/view_profile.html',{})
+    return render(reqeust,'pages/view_profile.html',{'profile':profile})
 
 @login_required   
 def basic_info(request):

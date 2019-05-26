@@ -29,13 +29,15 @@ class Profile(models.Model):
     
 
     def __str__(self):
-        return 'Profile for user{}'.format(self.user)
+        return str(self.user)
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.user.username)
         super(Profile, self).save(*args, **kwargs)
 
+    # def get_absolute_url(self):
+    #     reverse('work:view_profile', args=[self.slug])    
 
 class ProfileQRCode(models.Model):
     profile = models.OneToOneField(Profile, related_name='qr_code', on_delete=models.CASCADE, max_length=100,
@@ -43,6 +45,27 @@ class ProfileQRCode(models.Model):
     qr_code = models.ImageField(upload_to="QR_codes/", null=True, blank=True)
     
     def save(self, *args, **kwargs):
+        url = "http://127.0.0.1:8000"
+        # store_id = "rqojqQuzumU::" + str(self.store.pk)
+        # store_id = base64.urlsafe_b64encode(store_id)
+        # print(store_id)
+        # self.slug = slugify(str(self.feedback_form))
+        sub_url = url + reverse('work:view_profile', args=[self.profile])
+        print(sub_url)
+        # short_qr_code = self.short_code  = GenerateUrl().qr_shortner(sub_url)
+        # print(short_qr_code)
+        import qrcode
+        qr = qrcode.QRCode(
+            version=1,
+            box_size=20,
+            border=0
+        )
+        qr.add_data(sub_url)
+        qr.make(fit=True)
+        img = qr.make_image()
+        stream = BytesIO()
+        img.save(stream, kind='PNG')
+        self.qr_code = SimpleUploadedFile("qr_code.png", stream.getvalue())
         super(ProfileQRCode, self).save(*args, **kwargs)
 
 '''EDUCATION'''
