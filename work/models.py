@@ -5,7 +5,8 @@ from django.core.validators import RegexValidator
 from django.urls import reverse
 from django.template.defaultfilters import slugify
 '''PROFILE'''
-
+from io import BytesIO
+from django.core.files.uploadedfile import SimpleUploadedFile
 class Profile(models.Model):
 
     STATUS_CHOICES = (('student','STUDENT'),('employer','EMPLOYER'),('freelancer','FREELANCER'))

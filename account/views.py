@@ -5,9 +5,10 @@ from django.contrib.auth.decorators import login_required
 from work.models import Profile
 
 @login_required
-def dashboard(reqeust):
-
-    return render(reqeust,'pages/dashboard.html',{'section':'dashboard'})
+def dashboard(request):
+    url = "http://127.0.0.1:8000/profile/" + request.user.username
+    return render(request,'pages/dashboard.html',{'section':'dashboard',
+                                                  'url':url})
 
 
 

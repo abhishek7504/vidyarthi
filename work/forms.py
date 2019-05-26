@@ -24,3 +24,4 @@ class Other_docForm(forms.ModelForm):
         model = Other_doc
         fields = ('__all__')
         exclude = ('Profile',)
+

@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile, ProfileQRCode
 
-
-def profile(reqeust, slug):
+def profile(request, slug):
     profile = get_object_or_404(Profile, slug=slug)
+    qrcode, created = ProfileQRCode.objects.get_or_create(profile=profile)   
 
-    return render(reqeust,'pages/view_profile.html',{'profile':profile})
+    return render(request,'pages/view_profile.html',{'profile':profile
+                                                    ,'qrcode':qrcode})
 
 @login_required   
 def basic_info(request):
