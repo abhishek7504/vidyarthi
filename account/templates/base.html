@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
-    <title>Vidyarthi</title>
+    <title>Vidyarthi:{% block title %}{% endblock %}</title>
 </head>
 <body>
   <!-- Nav bar   -->
@@ -22,16 +22,7 @@
             <a href="#!" class="button-collapse" data-activates="mobile-nav"><i class="material-icons">menu</i> </a>
             <a href="/" class="brand-logo">Vidyarthi</a>
   
-            <ul class="right hide-on-med-and-down">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/">About</a>
-              </li>
-              <li>
-                <a href="/">Contact</a>
-              </li>
+            <ul class="right hide-on-med-and-down">        
               {% if request.user.is_authenticated %}
               <li>
                 <a href="#!" class="dropdown-button" data-activates="dropdown">
@@ -46,22 +37,17 @@
               <li>
                 <a href="{% url 'logout' %}" class="btn">logout</a>
               </li>
+              <li>
+              <a href="{% url 'password_change'  %}">  CHANGE PASSWORD </a></li>
               {% else %}
               <li>
                   <a href="{% url 'login' %}" class="btn">login</a>
               </li>
+
               {% endif %}
+
             </ul>
             <ul class="side-nav" id="mobile-nav">
-              <li>
-                <a href="#!">Home</a>
-              </li>
-              <li>
-                <a href="#!">About</a>
-              </li>
-              <li>
-                <a href="#!">Contact</a>
-              </li>
   
               <li>
                 <a href="#!" class="btn">login</a>
@@ -111,7 +97,7 @@
   </div>
   <div class="footer-copyright teal lighten-2">
     <div class="container">
-      Copyright &copy; 2018
+      Copyright &copy; 2019
       <a href="#!" class="grey-text text-lighten-3 right"><i class="material-icons red-text accent-2 left">favorite_border</i>
         Made with love</a>
     </div>

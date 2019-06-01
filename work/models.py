@@ -69,6 +69,10 @@ class ProfileQRCode(models.Model):
         self.qr_code = SimpleUploadedFile("qr_code.png", stream.getvalue())
         super(ProfileQRCode, self).save(*args, **kwargs)
 
+        def __str__(self):
+            return self.profile
+
+
 '''EDUCATION'''
 
 class Education(models.Model):
